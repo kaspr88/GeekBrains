@@ -1,28 +1,32 @@
-﻿// Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-int num = inputArr("Введите элемент массива:");
-Console.Write($"{num}");
-//Console.Write(getNumber(num));
+// Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+int[] array = inputArr("Введите элемент");
+outputArr(array);
 
-int inputArr(string mesage)
+int[] inputArr(string mesage)
 {
-    int namber = 0;
-    while (namber <= 8)
-    {
-        Console.Write(mesage + $" {namber}");
-        int[] arr = new int[int.Parse(Console.ReadLine() ?? "")];
-        namber++;
-    }
-    return namber;
-}
-
-
-/*
-int getNumber(int num)
-{
+    int[] arr = new int[8];
     int n = 0;
-    for (int i = 0; i < arr.Length; i++)
+    for (int i = 0; i < 8; i++)
     {
-        n = arr[i];
+        Console.Write($"{mesage} {i} из {arr.Length}:");
+        n = int.Parse(Console.ReadLine() ?? "");
+        arr[i] = n;
     }
-    return n;
-}*/
+    return arr;
+}
+static void outputArr(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]}");
+        if (i < array.Length - 1) Console.Write(", ");
+    }
+    Console.Write(" -> ");
+    Console.Write("[");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]}");
+        if (i < array.Length - 1) Console.Write(", ");
+    }
+    Console.Write("]");
+}
