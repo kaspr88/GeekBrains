@@ -14,7 +14,6 @@ int[] inputArr(string mesage, string error)
             Console.WriteLine(error);
             break;
         };
-
     }
     return arr;
 }
