@@ -3,7 +3,7 @@ Console.Clear();
 int[] array = RandomArray(10, 0, 100);
 int defValue = sumValue(array);
 Console.WriteLine($"[{String.Join(" ", array)}] --> {defValue} ");
-//<-----Разниц между максимальным и минимальным элементов массива----->//
+//<-----Разница между максимальным и минимальным элементов массива----->//
 int sumValue(int[] arr)
 {
     int max = arr[0];
