@@ -19,13 +19,17 @@ while (true)
     Console.Clear();
 }
 //////////////////////////////////////
+// создаем новый поток
+//Thread myThread = new Thread(enterDirection);
+// запускаем поток myThread
+//myThread.Start();
 string enterDirection()
 {
     string direction = "0";
     try
     {
         Console.WriteLine("Введите направление");
-        direction = Console.ReadLine();
+        direction = Console.ReadLine() ?? "";
 
     }
     catch (Exception ex)
