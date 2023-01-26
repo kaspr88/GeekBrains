@@ -5,8 +5,7 @@ inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
 printArray(array0);
 arithmeticMean(array0);
-//Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join("; ", array1)}");
-////////////////////////////////////////////
+/////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
     try
@@ -18,11 +17,10 @@ void inputSizeArray(ref int a, ref int b)
     }
     catch (Exception ex)
     {
-
         Console.Write("Не верный формат", ex);
     }
 }
-///////////////////////////////////////////
+//////////Заполнение массива рандомными числами/////////////////////
 int[,] randomFillArray(int m, int n, int minValue, int maxValue)
 {
     int[,] arr = new int[m, n];
@@ -35,7 +33,7 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     }
     return arr;
 }
-////////////////////////////////////////////
+/////////////////Поиск среднего арифметического////////////////////
 void arithmeticMean(int[,] arr)
 {
     Console.Write($"Среднее арифметическое каждого столбца: ");
@@ -49,9 +47,8 @@ void arithmeticMean(int[,] arr)
         a = Math.Round((Convert.ToDouble(a)) / arr.GetLength(0), 1);
         Console.Write($" {a} ");
     }
-
 }
-///////////////////////////////////////////
+//////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -62,5 +59,4 @@ void printArray(int[,] arr)
         }
         Console.WriteLine("");
     }
-
 }
