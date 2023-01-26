@@ -2,26 +2,24 @@
 int m = 0;
 int n = 0;
 inputSizeArray("Введите размер массива: ", "Ошибка ввода", ref m, ref n);
-double[,] arr = randomFillArray(m, n, -10, 11);
+double[,] arr = randomFillArray(m, n);
 Console.WriteLine($" m = {m}, n = {n} ");
 printArray(arr);
-
-double[,] randomFillArray(int m, int n, int minValue, int maxValue)
+//////////Заполнение массива рандомными числами////////////////////
+double[,] randomFillArray(int m, int n)
 {
     double[,] array = new double[m, n];
     Random rnd = new Random();
-
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = Convert.ToDouble(rnd.Next(minValue, maxValue));
+            array[i, j] = Math.Round(Convert.ToDouble(rnd.NextDouble() * 10 - 5), 1);
         }
     }
     return array;
-
 }
-
+/////////////////Ввод размерности массива/////////////////////////
 void inputSizeArray(string massage, string error, ref int num1, ref int num2)
 {
     try
@@ -33,15 +31,12 @@ void inputSizeArray(string massage, string error, ref int num1, ref int num2)
     }
     catch (Exception ex)
     {
-
         Console.WriteLine(error, ex);
     }
-
 }
-
+//////////////////////////Вывод массива///////////////////////////
 void printArray(double[,] array)
 {
-
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -50,5 +45,4 @@ void printArray(double[,] array)
         }
         Console.WriteLine(" ");
     }
-
 }
