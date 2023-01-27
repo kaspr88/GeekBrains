@@ -3,11 +3,9 @@ int columns = 0;
 int rows = 0;
 inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
-int[,] array1 = replacementRows(array0);
-replacementRows(array0);
 printArray(array0);
-printReplacementArray(array1);
-
+int[,] array1 = sortRows(array0);
+printSortRows(array1);
 /////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
@@ -36,28 +34,27 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     }
     return arr;
 }
-/////////////////Поиск среднего арифметического////////////////////
-int[,] replacementRows(int[,] arr)
+/////////////////Сортировка массива////////////////////
+int[,] sortRows(int[,] array)
 {
-    int[,] array = new int[arr.GetLength(0), arr.GetLength(1)];
-    //int a = arr[0,0]
-    for (int i = 0; i < arr.GetLength(0); i++)
+    int[,] arr = array;
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < arr.GetLength(1) - 1; j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            for (int z = 0; z < arr.GetLength(1) - 1; z++)
+            for (int k = 0; k < array.GetLength(1) - 1; k++)
             {
-                if (arr[i, z] < arr[i, z + 1])
+                if (array[i, k] < array[i, k + 1])
                 {
-                    int temp = 0;
-                    temp = arr[i, z];
-                    arr[i, z] = arr[i, z + 1];
-                    arr[i, z + 1] = temp;
+                    int temp = array[i, k + 1];
+                    array[i, k + 1] = array[i, k];
+                    array[i, k] = temp;
+                    arr[i,k] = arr[i, k];
                 }
             }
         }
     }
-    return array;
+    return arr;
 }
 //////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] arr)
@@ -70,11 +67,11 @@ void printArray(int[,] arr)
         }
         Console.WriteLine("");
     }
-}
-////////////////////
-void printReplacementArray(int[,] arr)
-{
     Console.WriteLine("");
+}
+/////////////////////Вывод отсортированного массива////////////////////
+void printSortRows(int[,] arr)
+{
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
@@ -83,4 +80,5 @@ void printReplacementArray(int[,] arr)
         }
         Console.WriteLine("");
     }
+    Console.WriteLine("");
 }
