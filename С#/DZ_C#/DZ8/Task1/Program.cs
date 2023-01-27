@@ -1,21 +1,21 @@
-﻿// Задача 55: Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. В случае, если это невозможно, программа должна вывести сообщение для пользователя.
-
+﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 int columns = 0;
 int rows = 0;
 inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
-int[,] array1 = replacementRowsToColoms(array0);
-replacementRowsToColoms(array0);
+int[,] array1 = replacementRows(array0);
+replacementRows(array0);
 printArray(array0);
 printReplacementArray(array1);
+
 /////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
     try
     {
-        Console.Write("Введите колличество строк: ");
-        a = int.Parse(Console.ReadLine() ?? "");
         Console.Write("Введите колличество столбцов: ");
+        a = int.Parse(Console.ReadLine() ?? "");
+        Console.Write("Введите колличество строк: ");
         b = int.Parse(Console.ReadLine() ?? "");
     }
     catch (Exception ex)
@@ -37,17 +37,27 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     return arr;
 }
 /////////////////Поиск среднего арифметического////////////////////
-int[,] replacementRowsToColoms(int[,] arr)
+int[,] replacementRows(int[,] arr)
 {
-    int[,] res = new int[arr.GetLength(1), arr.GetLength(0)];
+    int[,] array = new int[arr.GetLength(0), arr.GetLength(1)];
+    //int a = arr[0,0]
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1) - 1; j++)
         {
-            res[j, i] = arr[i, j];
+            for (int z = 0; z < arr.GetLength(1) - 1; z++)
+            {
+                if (arr[i, z] < arr[i, z + 1])
+                {
+                    int temp = 0;
+                    temp = arr[i, z];
+                    arr[i, z] = arr[i, z + 1];
+                    arr[i, z + 1] = temp;
+                }
+            }
         }
     }
-    return res;
+    return array;
 }
 //////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] arr)
@@ -60,11 +70,11 @@ void printArray(int[,] arr)
         }
         Console.WriteLine("");
     }
-    Console.WriteLine("");
 }
-//////////////////////////////////////////////////////////////////
+////////////////////
 void printReplacementArray(int[,] arr)
 {
+    Console.WriteLine("");
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
