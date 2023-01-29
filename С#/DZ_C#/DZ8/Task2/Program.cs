@@ -4,10 +4,10 @@ int rows = 0;
 inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
 printArray(array0);
-int[] array1 = sortRows(array0);
-Console.WriteLine($"{String.Join(" ", array1)}");
-printSortRows(array1);
-//printSortRows(array1);
+int[] array1 = arraySumRows(array0);
+int namberRows = sumElementRows(array1);
+Console.WriteLine($"Сумы элементов строк: {String.Join(" ", array1)}");
+Console.WriteLine($"Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: {namberRows + 1} строка");
 /////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
@@ -36,21 +36,15 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     }
     return arr;
 }
-/////////////////Сортировка массива////////////////////
-int[] sortRows(int[,] array)
+/////////////////Массив с суммами строк////////////////////
+int[] arraySumRows(int[,] array)
 {
     int[] a = new int[array.GetLength(0)];
     for (int i = 0; i < array.GetLength(1); i++)
     {
         for (int j = 0; j < array.GetLength(0); j++)
         {
-
             a[j] = a[j] + array[j, i];
-            if (a[j] < a[j] + 1)
-            {
-
-            }
-
         }
     }
     return a;
@@ -68,19 +62,18 @@ void printArray(int[,] arr)
     }
     Console.WriteLine("");
 }
-/////////////////////Вывод отсортированного массива////////////////////
-void printSortRows(int[] arr)
+/////////////////////Номер строки с минимальной суммой элементов////////////////////
+int sumElementRows(int[] arr)
 {
-    int a = 0;
+    int a = arr[0];
     int b = 0;
     for (int i = 0; i < arr.Length - 1; i++)
     {
-        if (b > arr[i])
+        if (arr[i] < a)
         {
-            a = i + 1;
-
+            a = arr[i];
+            b = i;
         }
-        b = arr[i];
     }
-    Console.WriteLine(a);
+    return b;
 }
