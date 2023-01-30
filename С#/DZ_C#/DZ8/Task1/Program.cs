@@ -1,10 +1,11 @@
-﻿//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 int columns = 0;
 int rows = 0;
 inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
 printArray(array0);
-arithmeticMean(array0);
+int[,] array1 = sortRows(array0);
+printSortRows(array1);
 /////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
@@ -33,20 +34,27 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     }
     return arr;
 }
-/////////////////Поиск среднего арифметического////////////////////
-void arithmeticMean(int[,] arr)
+/////////////////Сортировка массива////////////////////
+int[,] sortRows(int[,] array)
 {
-    Console.Write($"Среднее арифметическое каждого столбца: ");
-    for (int i = 0; i < arr.GetLength(1); i++)
+    int[,] arr = array;
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        double a = 0;
-        for (int j = 0; j < arr.GetLength(0); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            a = Math.Round((Convert.ToDouble(a) + Convert.ToDouble(arr[j, i])));
+            for (int k = 0; k < array.GetLength(1) - 1; k++)
+            {
+                if (array[i, k] < array[i, k + 1])
+                {
+                    int temp = array[i, k + 1];
+                    array[i, k + 1] = array[i, k];
+                    array[i, k] = temp;
+                    arr[i,k] = arr[i, k];
+                }
+            }
         }
-        a = Math.Round((Convert.ToDouble(a)) / arr.GetLength(0), 1);
-        Console.Write($" {a} ");
     }
+    return arr;
 }
 //////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] arr)
@@ -59,4 +67,18 @@ void printArray(int[,] arr)
         }
         Console.WriteLine("");
     }
+    Console.WriteLine("");
+}
+/////////////////////Вывод отсортированного массива////////////////////
+void printSortRows(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write($" {arr[i, j]}");
+        }
+        Console.WriteLine("");
+    }
+    Console.WriteLine("");
 }

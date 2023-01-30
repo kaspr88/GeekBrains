@@ -7,21 +7,13 @@ Console.Write($"Введите искомое значение: ");
 int num = inputInNum();
 printArray(arr);
 bool result = checingNumber(arr, num);
-if (result)
-{
-    Console.WriteLine($"Значение {num} существует");
-}
-else
-{
-    Console.WriteLine($"Значение {num} не существует");
-}
-
-
+if (result) Console.WriteLine($"Значение {num} существует");
+else Console.WriteLine($"Значение {num} не существует");
+//////////Заполнение массива рандомными числами////////////////////
 int[,] randomFillArray(int m, int n, int minValue, int maxValue)
 {
     int[,] array = new int[m, n];
     Random rnd = new Random();
-
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
@@ -30,9 +22,8 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
         }
     }
     return array;
-
 }
-
+/////////////////////Ввод и проверка искомого значения/////////////
 int inputInNum()
 {
     int num = 0;
@@ -46,10 +37,9 @@ int inputInNum()
     }
     return num;
 }
-
+//////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] array)
 {
-
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -58,9 +48,8 @@ void printArray(int[,] array)
         }
         Console.WriteLine(" ");
     }
-
 }
-
+/////////////////////Поиск введенного числа в массиве/////////////
 bool checingNumber(int[,] array, int num)
 {
     bool n = false;
@@ -73,7 +62,7 @@ bool checingNumber(int[,] array, int num)
     }
     return n;
 }
-
+/////////////////Ввод размерности массива/////////////////////////
 void inputSizeArray(string massage, string error, ref int num1, ref int num2)
 {
     try
@@ -85,7 +74,6 @@ void inputSizeArray(string massage, string error, ref int num1, ref int num2)
     }
     catch (Exception ex)
     {
-
         Console.WriteLine(error, ex);
     }
 

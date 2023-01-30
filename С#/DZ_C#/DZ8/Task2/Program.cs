@@ -1,10 +1,13 @@
-﻿//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿//  Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 int columns = 0;
 int rows = 0;
 inputSizeArray(ref rows, ref columns);
 int[,] array0 = randomFillArray(columns, rows, 0, 10);
 printArray(array0);
-arithmeticMean(array0);
+int[] array1 = arraySumRows(array0);
+int namberRows = sumElementRows(array1);
+Console.WriteLine($"Сумы элементов строк: {String.Join(" ", array1)}");
+Console.WriteLine($"Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: {namberRows + 1} строка");
 /////////////////Ввод размерности массива///////////////////////////
 void inputSizeArray(ref int a, ref int b)
 {
@@ -33,20 +36,18 @@ int[,] randomFillArray(int m, int n, int minValue, int maxValue)
     }
     return arr;
 }
-/////////////////Поиск среднего арифметического////////////////////
-void arithmeticMean(int[,] arr)
+/////////////////Массив с суммами строк////////////////////
+int[] arraySumRows(int[,] array)
 {
-    Console.Write($"Среднее арифметическое каждого столбца: ");
-    for (int i = 0; i < arr.GetLength(1); i++)
+    int[] a = new int[array.GetLength(0)];
+    for (int i = 0; i < array.GetLength(1); i++)
     {
-        double a = 0;
-        for (int j = 0; j < arr.GetLength(0); j++)
+        for (int j = 0; j < array.GetLength(0); j++)
         {
-            a = Math.Round((Convert.ToDouble(a) + Convert.ToDouble(arr[j, i])));
+            a[j] = a[j] + array[j, i];
         }
-        a = Math.Round((Convert.ToDouble(a)) / arr.GetLength(0), 1);
-        Console.Write($" {a} ");
     }
+    return a;
 }
 //////////////////////////Вывод массива///////////////////////////
 void printArray(int[,] arr)
@@ -59,4 +60,20 @@ void printArray(int[,] arr)
         }
         Console.WriteLine("");
     }
+    Console.WriteLine("");
+}
+/////////////////////Номер строки с минимальной суммой элементов////////////////////
+int sumElementRows(int[] arr)
+{
+    int a = arr[0];
+    int b = 0;
+    for (int i = 0; i < arr.Length - 1; i++)
+    {
+        if (arr[i] < a)
+        {
+            a = arr[i];
+            b = i;
+        }
+    }
+    return b;
 }
