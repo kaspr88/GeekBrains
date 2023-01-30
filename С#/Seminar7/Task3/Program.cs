@@ -38,7 +38,7 @@ int getSum(int[,] inArray)
             sum = sum + inArray[i, i];
         }
         return sum;
-        Console.WriteLine("");
+        //Console.WriteLine("");
 
     }
 
