@@ -60,7 +60,12 @@ int[,] multiplyingArrays(int[,] arr1, int[,] arr2)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = arr1[i, j] * arr2[i, j];
+            for (int k = 0; k < array.GetLength(1) - 1; k++)
+            {
+
+                array[i, j] = array[i, j] + arr1[i, k] * arr2[k, j];
+
+            }
         }
     }
     return array;
