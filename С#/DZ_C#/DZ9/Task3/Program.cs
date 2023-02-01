@@ -6,21 +6,18 @@ int a = recursion(m, n);
 Console.Write($"m = {m} n = {n} --> A(m,n) = {a}");
 void inputNumber(ref int a, ref int b)
 {
-
     try
     {
         Console.Write("Введите число M: ");
         a = int.Parse(Console.ReadLine() ?? "");
         Console.Write("Введите число N: ");
         b = int.Parse(Console.ReadLine() ?? "");
-
     }
     catch (Exception ex)
     {
         Console.Write("Не верный формат", ex);
     }
 }
-
 int recursion(int m, int n)
 {
     if (m == 0) return n + 1;
