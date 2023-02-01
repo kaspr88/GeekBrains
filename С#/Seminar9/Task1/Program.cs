@@ -25,7 +25,7 @@ int Number(int n, int m)
     if (n == m)
         return n;
     else
-        Console.Write($"{Number(n, m + 1)}, ");
+        Console.Write($"{Number(m, n + 1)}, ");
     return m;
 }
 
