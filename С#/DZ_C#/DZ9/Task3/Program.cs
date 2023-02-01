@@ -3,7 +3,7 @@ int m = 0;
 int n = 0;
 inputNumber(ref m, ref n);
 int a = recursion(m, n);
-Console.Write($"A = {a};");
+Console.Write($"m = {m} n = {n} --> A(m,n) = {a}");
 void inputNumber(ref int a, ref int b)
 {
 
