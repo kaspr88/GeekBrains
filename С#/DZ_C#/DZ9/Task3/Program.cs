@@ -1,5 +1,4 @@
 ﻿// Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
-Console.WriteLine("Hello, World!");
 int m = 0;
 int n = 0;
 inputNumber(ref m, ref n);
@@ -24,13 +23,8 @@ void inputNumber(ref int a, ref int b)
 
 int recursion(int m, int n)
 {
-    if (m == 0)
-    {
-        return 0;
-    }
-    int A = 0;
-    if (m == 0) A = n + 1;
-    if (n == 0) A = recursion(m - 1, 1);
-    if (n > 0 && m > 0) A = recursion(m - 1, recursion(m, n - 1));
-    return A;
+    if (m == 0) return n + 1;
+    if (m > 0 && n == 0) return recursion(m - 1, 1);
+    if (m > 0 && n > 0) return recursion(m - 1, recursion(m, n - 1));
+    return recursion(m, n);
 }
