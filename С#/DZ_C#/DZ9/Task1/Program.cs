@@ -1,16 +1,15 @@
 ﻿// Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
-int N = inputNumber();
-//Console.Write($"N = {N} --> \"");
-//Console.Write($"{recursion(N)}\"");
-
-int inputNumber()
+int N = inputN();
+int M = 1;
+Console.Write($"N = {N} --> \"");
+Console.WriteLine($"{Number(N, M)}\"");
+int inputN()
 {
     int a = 0;
     try
     {
-        Console.Write("Введите число N: ");
+        Console.Write("Введите N: ");
         a = int.Parse(Console.ReadLine() ?? "");
-
     }
     catch (Exception ex)
     {
@@ -18,16 +17,10 @@ int inputNumber()
     }
     return a;
 }
-int recursion(int N)
+int Number(int n, int m)
 {
-    if (N == 1)
-    {
-        return 1;
-    }
-    Console.Write($"{N}, ");
-    N--;
-    return recursion(N);
-
-
-
+    if (n == m)
+        return m;
+    Console.Write($"{n}, ");
+    return Number(n - 1, m);
 }
