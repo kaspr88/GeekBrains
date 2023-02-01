@@ -6,14 +6,12 @@ int sum = recursion(M, N);
 Console.Write($"M = {M}; N = {N} --> {sum} ");
 void inputNumber(ref int a, ref int b)
 {
-
     try
     {
         Console.Write("Введите число M: ");
         a = int.Parse(Console.ReadLine() ?? "");
         Console.Write("Введите число N: ");
         b = int.Parse(Console.ReadLine() ?? "");
-
     }
     catch (Exception ex)
     {
