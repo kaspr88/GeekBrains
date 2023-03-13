@@ -25,3 +25,4 @@ int recursion(int m, int n)
     if (m > 0 && n > 0) return recursion(m - 1, recursion(m, n - 1));
     return recursion(m, n);
 }
+Console.ReadLine();

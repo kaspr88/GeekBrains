@@ -24,3 +24,4 @@ int Number(int n, int m)
     Console.Write($"{n}, ");
     return Number(n - 1, m);
 }
+Console.ReadLine();
