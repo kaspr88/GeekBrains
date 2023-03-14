@@ -2,8 +2,6 @@
 int N = inputN();
 int M = 1;
 Console.WriteLine(Number(N, M));
-
-
 int inputN()
 {
     int a = 0;
@@ -11,7 +9,6 @@ int inputN()
     {
         Console.Write("Введите N: ");
         a = int.Parse(Console.ReadLine() ?? "");
-
     }
     catch (Exception ex)
     {
@@ -19,13 +16,11 @@ int inputN()
     }
     return a;
 }
-
 int Number(int n, int m)
 {
     if (n == m)
         return n;
     else
-        Console.Write($"{Number(n, m + 1)}, ");
+        Console.Write($"{Number(m, n + 1)}, ");
     return m;
 }
-

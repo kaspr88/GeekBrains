@@ -287,8 +287,12 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+<<<<<<< HEAD
 
  Byte-compiled / optimized / DLL files
+=======
+# Byte-compiled / optimized / DLL files
+>>>>>>> 8ffbd57a2edbecc3467e7d2e6c909f2e6a79817d
 __pycache__/
 *.py[cod]
 *$py.class
