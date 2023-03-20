@@ -13,7 +13,7 @@ valueLetter = {'A': a, 'E': a, 'I': a, 'O': a, 'U': a, 'L': a, 'N': a, 'S': a, '
                'K': e,
                'J': f, 'X': f,
                'Q': g, 'Z': g}
-word = str(input("Введите слово на английском языке: ").upper)
+word = str(input("Введите слово на английском языке: ").upper())
 count = 0
 for i in word:
     for j in valueLetter:
