@@ -13,12 +13,10 @@ valueLetter = {'A': a, 'E': a, 'I': a, 'O': a, 'U': a, 'L': a, 'N': a, 'S': a, '
                'K': e,
                'J': f, 'X': f,
                'Q': g, 'Z': g}
-word = input("Введите слово на английском языке: ")
+word = str(input("Введите слово на английском языке: ").upper)
 count = 0
-i = 0
-for key in valueLetter:
-    if word[i] == key:
-        count = count + valueLetter[key]
-        i += 1
-
+for i in word:
+    for j in valueLetter:
+        if i == j:
+            count = count + valueLetter[j]
 print(count)
