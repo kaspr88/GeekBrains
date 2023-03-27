@@ -13,8 +13,12 @@ print(list1)
 for i in range(m):
     list2.append(random.randint(10, 99))
 print(list2)
-
-for i in range(n):
-    for j in range(m):
-        if list1[1] != list2[j]:
-            list3
+a = 0
+for j in list1:
+    list3.append(j)
+for i in list2:
+    list3.append(i)
+res = list(set(list3))
+res.sort()
+for i in res:
+    print(int(i), end=', ')
