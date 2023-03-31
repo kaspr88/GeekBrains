@@ -14,11 +14,11 @@ for i in range(m):
     list2.append(random.randint(10, 20))
 print(list2)
 a = 0
-for i in range(n):
-    for j in range(m):
-        if list1[i] != list2[j]:
-            a = list2[i]
-    if a != list1[i]:
-        list3.append(a)
-        list3.append(list1[i])
-print(list3)
+for j in list1:
+    list3.append(j)
+for i in list2:
+    list3.append(i)
+res = list(set(list3))
+res.sort()
+for i in res:
+    print(int(i), end=', ')
