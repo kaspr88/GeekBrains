@@ -7,25 +7,21 @@
 **Ввод:** пара-ра-рам рам-пам-папам па-ра-па-да    
     **Вывод:** Парам пам-пам '''
 
-Vini_Puh = 'пара-ри-рам рам-пум-папам пу-ра-пи-да'
+Vini_Puh = 'пара-ри-рам рам-пум-папам пу-ра-пи-да-ма'
 
 
 def parampam(pam):
-    b = 0
-    c = []
-    for i in pam:
-        if i in "аеёиоуыэюя":
-            b += 1
-        elif i == " ":
-            print(b)
-            # b += 1
-            c.append(b)
-            b = 0
-        print(b)
+    x = Vini_Puh.split()
+    z = []
+    for i in x:
+        y = 0
+        for j in i:
+            if j in "аеёиоуыэюя":
+                y += 1
+        z.append(y)
     e = 0
-    for i in range(len(c)-1):
-        e = c[i] - c[i+1]
-    print(c)
+    for i in range(len(z)-1):
+        e = z[i] - z[i+1]
     return e
 
 
