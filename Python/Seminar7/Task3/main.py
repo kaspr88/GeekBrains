@@ -9,3 +9,12 @@ if __name__ == "__main__":
         print('same')
     else:
         print('different')
+
+dict_sample = {
+    "Company": "Toyota",
+    "model": "Premio",
+    "year": 2012
+}
+
+a = "\n".join(f'{dict_sample[k]} {v}'for k, v in dict_sample.items())
+print(a)
