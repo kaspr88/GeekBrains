@@ -1,8 +1,1 @@
-surname 1
-phone 2
-name 3
-patronymic 4
-surname 7
-phone 8
-name 9
-patronymic 6
+{"surname": "Иванов", "phone": "12345678", "name": "Иван", "patronymic": "Иванович"}
