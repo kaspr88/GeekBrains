@@ -29,16 +29,19 @@ def data_save(data_input):
 
 def data_read():
     file = open("Python/DZ/DZ8/file1.txt", "r", encoding="utf-8")
-    onstring = file.read().split("\n")[:-1]
+    onstring = file.read().split("\n")
     arr = []
     array = {}
     for item in onstring:
-        key = item.split(" ")[0]
-        value = item.split(" ")[1]
-        array[key] = value
-    arr.append(array)
-
-    print(f'{arr}\n')
+        key = item.split(" ")
+        # a = key[2:len(key)-2]
+        print(key[0])
+        print(key[1])
+        key1 = key[0]
+        value = key[1]
+        array[key1] = value
+        arr.append(array)
+        print(f'{arr}\n')
     file.close()
 
     return arr
@@ -47,22 +50,22 @@ def data_read():
 print(data_read())
 
 
-def data_search(data_read):
-    input_search = input(
-        "Введите Фамилию искомого абонента: ")
-    for key in data_read:
-        if input_search == data_read["surname"]:
-            print(
-                f"{data_read['phone']}, {data_read['name']}, {data_read['patronymic']}, ")
-            break
-        else:
-            return False
+# def data_search(data_read):
+#     input_search = input(
+#         "Введите Фамилию искомого абонента: ")
+#     for key in data_read:
+#         if input_search == data_read["surname"]:
+#             print(
+#                 f"{data_read['phone']}, {data_read['name']}, {data_read['patronymic']}, ")
+#             break
+#         else:
+#             return False
 
 
-def data_output(data_search, data_read):
-    file = open("Python/DZ/DZ8/file1.txt", "r", encoding="utf-8")
-    file.read()
-    file.close()
+# def data_output(data_search, data_read):
+#     file = open("Python/DZ/DZ8/file1.txt", "r", encoding="utf-8")
+#     file.read()
+#     file.close()
 
 
-data_output(data_search(data_read()), data_read())
+# data_output(data_search(data_read()), data_read())
