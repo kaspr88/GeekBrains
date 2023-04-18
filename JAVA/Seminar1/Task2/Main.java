@@ -1,4 +1,3 @@
-package JAVA.Seminar1.Task2;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -15,7 +14,7 @@ public class Main {
         int[] resultArray = new int[size];
         Random rnd = new Random();
         for (int i = 0; i < size; i++) {
-            resultArray[i] = rnd.nextInt(min_seed, max_seed+1);
+            resultArray[i] = rnd.nextInt(min_seed);
         }
         return resultArray;
     }
