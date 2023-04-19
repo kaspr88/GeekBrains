@@ -12,17 +12,25 @@ public class Main {
         System.out.print("Введите второе число: ");
         int m = in.nextInt();
         System.out.print("Введите требуемую операцию: ");
-        String operation = in.nextLine();
-        if (operation == "+") {
-            System.out.println(n + m);
-        } else if (operation == "-") {
-            System.out.println(n - m);
-        } else if (operation == "*") {
-            System.out.println(n * m);
-        } else if (operation == "/") {
-            System.out.println(n / m);
-        }
+        char peration = in.next().charAt(0);
+        in.close();
+        int num = Calculate(n, m, peration);
+        System.out.println(num);
 
+    }
+
+    public static Integer Calculate(int n, int m, char operation) {
+        int res = 0;
+        if (operation == '+') {
+            res = n + m;
+        } else if (operation == '-') {
+            res = n - m;
+        } else if (operation == '*') {
+            res = n * m;
+        } else if (operation == '/') {
+            res = n / m;
+        }
+        return res;
     }
 
 }
