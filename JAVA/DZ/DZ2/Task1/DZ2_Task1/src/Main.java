@@ -41,7 +41,6 @@ public class Main {
 
     public static void fileAdd(){
 
-        Источник: https://java-blog.ru/osnovy/logger-java
         try {
             File newFile = new File("file.txt");
             if (newFile.createNewFile()) {
