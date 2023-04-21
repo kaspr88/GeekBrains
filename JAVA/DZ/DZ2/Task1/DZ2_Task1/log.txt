@@ -1,0 +1,8 @@
+апр. 21, 2023 11:22:02 PM Main fileAdd
+INFO: Файл найден
+апр. 21, 2023 11:22:02 PM Main fileSave
+INFO: Данные записаны в файл
+апр. 21, 2023 11:22:02 PM Main fileRead
+INFO: Файл считан
+апр. 21, 2023 11:22:02 PM Main reparse
+INFO: Данные выведены в консоль
