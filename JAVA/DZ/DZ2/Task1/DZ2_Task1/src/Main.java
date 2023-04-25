@@ -5,17 +5,18 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Main {
+
     private final static Logger log = Logger.getAnonymousLogger();
+
     public static void main(String[] args) {
         String st = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":" +
                 "\"Информатика\"},{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
-        a();
+
+        loger();
         fileAdd();
         fileSave(st);
         reparse(fileRead());
         log.getHandlers()[0].close();
-
-
     }
 
     public static void fileAdd() {
@@ -84,7 +85,7 @@ public class Main {
         log.log(Level.INFO, "Данные выведены в консоль");
     }
 
-    public static void a() {
+    public static void logger() {
         try {
             FileHandler fh = null;
             fh = new FileHandler("log.txt");
