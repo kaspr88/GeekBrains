@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /*
  *Заполнить список названиями планет Солнечной системы в произвольном порядке с повторениями.
@@ -14,14 +11,14 @@ public class Main {
     }
 
     public static List planets() {
-        ArrayList<String> listPlanets = new ArrayList<>(List.of("Уран", "Меркурий", "Венера", "Меркурий", "Земля", "Марс", "Юпитер", "Меркурий", "Сатурн", "Юпитер", "Уран", "Нептун", "Плутон", "Венера"));
-
-        //System.out.println(arr[1]);
-        int count = 0;
-        for (Object num: listPlanets) {
-            if
+        ArrayList<String> listPlanets = new ArrayList<>(List.of("Уран", "Меркурий",  "Венера", "Земля", "Марс", "Меркурий", "Юпитер", "Меркурий", "Сатурн", "Юпитер", "Уран", "Нептун", "Плутон", "Венера"));
+        Collections.sort(listPlanets);
+        Set<String> printed = new HashSet<>();
+        for (String s : listPlanets) {
+            if (printed.add(s))
+                System.out.print(s + " " + Collections.frequency(listPlanets, s) + " ");
         }
-
         return null;
     }
+
 }
