@@ -1,14 +1,21 @@
 import java.util.LinkedList;
 
 public class MyClass {
-    Queue<Integer> queue = new LinkedList<>();
-    void dequeue(){
+    private LinkedList<Integer> queue = new LinkedList<>();
 
+    void enqueue(int num) {
+        queue.addLast(num);
     }
-    void enqueue(){
 
+    int dequeue() {
+        int num = queue.get(0);
+        queue.remove(0);
+        return num;
     }
-    void first(){
 
+    int first() {
+        int num = queue.get(0);
+        return num;
     }
+
 }
