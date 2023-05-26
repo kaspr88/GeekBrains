@@ -1,54 +1,54 @@
-/*Пусть дан список сотрудников: Иван Иванов, Светлана Петрова, Кристина Белова, Анна Мусина, Анна Крутова,
-* Иван Юрин, Петр Лыков, Павел Чернов, Петр Чернышов, Мария Федорова, Марина Светлова, Мария Савина, Мария Рыкова,
-* Марина Лугова, Анна Владимирова, Иван Мечников, Петр Петин, Иван Ежов. Написать программу, которая найдет и выведет
-* повторяющиеся имена с количеством повторений. Отсортировать по убыванию популярности.
-* Для сортировки использовать TreeMap.
-*/
+/*
+ * Пусть дан список сотрудников: Иван Иванов, Светлана Петрова,
+ * Кристина Белова, Анна Мусина, Анна Крутова, Иван Юрин, Петр Лыков,
+ * Павел Чернов, Петр Чернышов, Мария Федорова, Марина Светлова,
+ * Мария Савина, Мария Рыкова, Марина Лугова, Анна Владимирова,
+ * Иван Мечников, Петр Петин, Иван Ежов. Написать программу, которая
+ * найдет и выведет повторяющиеся имена с количеством повторений.
+ * Отсортировать по убыванию популярности.
+ * Для сортировки использовать TreeMap.
+ */
 
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
+public class Main {public static void main(String[] args) {
+    String str = "Иван Иванов, Светлана Петрова, Кристина Белова," +
+            " Анна Мусина, Анна Крутова, Иван Юрин, Петр Лыков, Павел Чернов," +
+            " Петр Чернышов, Мария Федорова, Марина Светлова, Мария Савина," +
+            " Мария Рыкова, Марина Лугова, Анна Владимирова, Иван Мечников," +
+            " Петр Петин, Иван Ежов.";
+    makeSort(str);
 
-public class Main {
-    public static void main(String[] args) {
-        TreeMap<String, Integer> namePeople = new TreeMap<>();
-        String[] staff = {
-                "Иван Иванов", "Светлана Петрова", "Кристина Белова", "Анна Мусина", "Анна Крутова", "Иван Юрин",
-                "Петр Лыков", "Павел Чернов", "Петр Чернышов", "Мария Федорова", "Марина Светлова",
-                "Мария Савина", "Мария Рыкова", "Марина Лугова", "Анна Владимирова",
-                "Иван Мечников", "Петр Петин", "Иван Ежов"
-        };
-        countName(staff, namePeople);
-        sortedStaff(namePeople);
+}
 
-    }
-
-    // Функция, считающая кол-во повторений имен сотрудников
-    public static void countName(String[] people, TreeMap<String, Integer> namePeople) {
-        for (String person : people) {
-            String name = person.split(" ")[0];
-            if (namePeople.containsKey(name)) {
-                namePeople.put(name, namePeople.get(name) + 1);
+    static void makeSort(String line) {
+        line = line.replace(",", "").replace(".", "");
+        String[] peoples = line.split(" ");
+        Map<String, Integer> hMap = new HashMap<>();
+        for (int i = 0; i < peoples.length; i = i + 2) {
+            if (hMap.containsKey(peoples[i])) {
+                hMap.put(peoples[i], hMap.get(peoples[i]) + 1);
             } else {
-                namePeople.put(name, 1);
+                hMap.put(peoples[i], 1);
             }
         }
-    }
 
-    // Функция сотртировки по убыванию популярности имени
-    public static void sortedStaff(TreeMap<String, Integer> namePeople) {
-        TreeMap<String, Integer> sortedName = namePeople.entrySet().stream()
-                .sorted(Comparator.comparingInt(e -> -e.getValue()))
-                .collect(Collectors.toMap(
-                        TreeMap.Entry::getKey,
-                        TreeMap.Entry::getValue,
-                        (a, b) -> {
-                            throw new AssertionError();
-                        },
-                        LinkedHashMap::new));
-
-        sortedName.entrySet().forEach(System.out::println);
-    }
-};
+        TreeMap<Integer, List<String>> tMap = new TreeMap<>();
+        for (var entry : hMap.entrySet()) {
+            String name = entry.getKey();
+            int count = entry.getValue();
+            if (tMap.containsKey(count)) {
+                List<String> list = tMap.get(count);
+                list.add(name);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(name);
+                tMap.put(count, list);
+            }
+        }
+        System.out.println(tMap.descendingMap());
     }
 }
